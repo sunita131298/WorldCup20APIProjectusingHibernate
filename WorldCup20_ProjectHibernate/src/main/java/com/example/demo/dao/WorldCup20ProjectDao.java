@@ -8,6 +8,7 @@ import javax.persistence.criteria.Order;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,22 +33,19 @@ public class WorldCup20ProjectDao {
 		return crList;
 	}
 
+	public void insertCrickStaff(CrickStaff crickStaff) {
+		Session session=factory.openSession();
+		Transaction txx=session.beginTransaction();
+		session.save(crickStaff);
+		txx.commit();
+		
+	}
+
+	public void updateCrickStaff(CrickStaff crickStaff) {
+		Session session =factory.openSession();
+		Transaction tx=session.beginTransaction();
+		session.update(crickStaff);
+	tx.commit();
 	
-
-
-
-
-	
-		
-		
-		
-		
-		
-	
-	        
-
-	
-
-
-
+	}
 }

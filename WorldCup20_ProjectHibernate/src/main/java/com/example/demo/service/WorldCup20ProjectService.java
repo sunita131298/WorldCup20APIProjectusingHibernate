@@ -68,71 +68,76 @@ public class WorldCup20ProjectService {
 		}
 		return stfdep;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-//	 public CrickStaff getCrickStaffWithMaxYearsToBCCI() {
-//		 dao.getCrickStaffWithMaxYearsToBCCI();
-//		 
-//	        C crickStaffList = CrickStaff.findAll();
-//	        return crickStaffList.stream()
-//	                .max(Comparator.comparing(CrickStaff::getStaffNoOfYaersToBCCI))
-//	                .orElse(null);
-//	    }
-
-
-//	public List<CrickStaff> findFirstByOrderByStaffNoOfYaersToBCCIDesc() {
-//		List<CrickStaff> maxyear =dao.getCrickStaffWithMaxYearsToBCCI();
-//		for (CrickStaff crickStaff : maxyear) {
-//			if(crickStaff.getStaffNoOfYaersToBCCI()>maxyear) {
-//				maxyear=crickStaff.getStaffNoOfYaersToBCCI();
-//				
-//				
-//			}
-//			
-//		}
-//		return maxyear;
-//		
-//	}
-	
-
-//	public List<CrickStaff> searchByName(int staffId) {
-//		List<CrickStaff> listt =dao.searchByName(staffId);
-//		return listt;
-//	}
-//
-//
-//	public CrickStaff maxYearTowork() {
-//		CrickStaff max=dao.maxYearTowork();
-//		return max;
-//	}
-//
-
-	
-
 
 
 	
+    //10 year above exprience name
+	public List<String> yearExpTenYear() {
+		List<CrickStaff> alist = dao.allIndianCksInformation();//to doa all data get
+		ArrayList<String> yearexpList=new ArrayList<>();// list of year
+		int max=10;
+		for (CrickStaff crickStaff : alist) {//only 10year experice 
+        int yearofexp = crickStaff.getStaffNoOfYaersToBCCI();
+         if(yearofexp > max) {
+        	 yearexpList.add(crickStaff.getStaffName());
+         }
+		}
+		return yearexpList;
+	}
 
+//below age 30
+	public List<String> staffAgeBelowThirty() {
+		List<CrickStaff> crickStaffslist=dao.allIndianCksInformation();
+		ArrayList<String> ageBelow= new ArrayList<>();
+		int max=30;
+		for (CrickStaff crikstaff :crickStaffslist) {
+			int age = crikstaff.getStaffAge();
+			
+			if(age<30) {
+				ageBelow.add(crikstaff.getStaffName());
+				
+			}
+		}
+			
 		
+		return ageBelow;
+	}
+
+//only medical staff
+	
+	public List<String> staffNameOnlyMedical() {
+		List<CrickStaff> mediacalList = dao.allIndianCksInformation();
+		ArrayList<String> mednames= new ArrayList<>();
+		for (CrickStaff allmedstaff : mediacalList) {
+			mednames.add(allmedstaff.getStaffmedical());
+			
+		}
+		return mednames;
+	}
+
+//addition of exp years of medical players
+	public List<String> additionodExpYearMedCount() {
+		List<CrickStaff> crickStaffslist=dao.allIndianCksInformation();
+		ArrayList<String> medicalstaff=new ArrayList<>();
+		for (CrickStaff cricketStaf : crickStaffslist) {
+			if(cricketStaf.getStaffDept().equals(medicalstaff)) {
+				medicalstaff.add(cricketStaf.getStaffName());
+			}
+			
+		}
+		return medicalstaff;
+	}
+
+
+	public void insertCrickStaff(CrickStaff crickStaff) {
+		dao.insertCrickStaff( crickStaff);
+		
+	}
+
+
+	public void updateCrickStaff(CrickStaff crickStaff) {
+		dao.updateCrickStaff(crickStaff);
+		
+	}		
 
 }

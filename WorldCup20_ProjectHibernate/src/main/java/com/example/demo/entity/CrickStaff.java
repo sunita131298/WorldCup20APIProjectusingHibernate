@@ -16,26 +16,36 @@ public class CrickStaff {
 	String staffName;
 	String staffDept;
 	int staffAge;
-	String staffNoOfYaersToBCCI;
+	int staffNoOfYaersToBCCI;
+	String staffmedical;
 	
 	public CrickStaff() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CrickStaff(int staffId, String staffName, String staffDept, int staffAge, String staffNoOfYaersToBCCI) {
+	public CrickStaff(int staffId, String staffName, String staffDept, int staffAge, int staffNoOfYaersToBCCI,String staffmedical) {
 		super();
 		this.staffId = staffId;
 		this.staffName = staffName;
 		this.staffDept = staffDept;
 		this.staffAge = staffAge;
 		this.staffNoOfYaersToBCCI = staffNoOfYaersToBCCI;
+		this.staffmedical=staffmedical;
 	}
-	public CrickStaff(String staffName, String staffDept, int staffAge, String staffNoOfYaersToBCCI) {
+	public CrickStaff(String staffName, String staffDept, int staffAge, int staffNoOfYaersToBCCI) {
 		super();
 		this.staffName = staffName;
 		this.staffDept = staffDept;
 		this.staffAge = staffAge;
 		this.staffNoOfYaersToBCCI = staffNoOfYaersToBCCI;
+	}
+	
+	
+	public String getStaffmedical() {
+		return staffmedical;
+	}
+	public void setStaffmedical(String staffmedical) {
+		this.staffmedical = staffmedical;
 	}
 	public int getStaffId() {
 		return staffId;
@@ -61,16 +71,17 @@ public class CrickStaff {
 	public void setStaffAge(int staffAge) {
 		this.staffAge = staffAge;
 	}
-	public String getStaffNoOfYaersToBCCI() {
+	public int getStaffNoOfYaersToBCCI() {
 		return staffNoOfYaersToBCCI;
 	}
-	public void setStaffNoOfYaersToBCCI(String staffNoOfYaersToBCCI) {
+	public void setStaffNoOfYaersToBCCI(int staffNoOfYaersToBCCI) {
 		this.staffNoOfYaersToBCCI = staffNoOfYaersToBCCI;
 	}
 	@Override
 	public String toString() {
 		return "CrickStaff [staffId=" + staffId + ", staffName=" + staffName + ", staffDept=" + staffDept
-				+ ", staffAge=" + staffAge + ", staffNoOfYaersToBCCI=" + staffNoOfYaersToBCCI + "]";
+				+ ", staffAge=" + staffAge + ", staffNoOfYaersToBCCI=" + staffNoOfYaersToBCCI + ", staffmedical="
+				+ staffmedical + "]";
 	}
 	
 	

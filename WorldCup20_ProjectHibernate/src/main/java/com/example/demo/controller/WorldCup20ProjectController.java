@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -56,8 +58,43 @@ public class WorldCup20ProjectController {
 		return service.allcksstaffDept();
 		
 	}
+	//10 year above need names
+	@GetMapping("/stafftenyear")
+	public List<String> yearExpTenYear(){
+		return service.yearExpTenYear();
+		
+		
+	}
+	@GetMapping("/staffAgebelowthirty")
+	public List<String> staffAgeBelowThirty(){
+		return service.staffAgeBelowThirty();
+		
+	}
 	
-	public 
+	@GetMapping("/medicalstaff")
+	public List<String> staffNameOnlyMedical(){
+		return service.staffNameOnlyMedical();
+		
+	}
+	
+	 //addition of exp years of medical players
+	@GetMapping("/additionodExpYearMedCount")
+	public List<String> additionodExpYearMedCount() {
+		return service.additionodExpYearMedCount();
+	
+		}
+	
+	@PostMapping("/insertCrickStaff")
+	public void insertCrickStaff(@RequestBody CrickStaff crickStaff) {
+		System.out.println(" Cric staff datafrom postman "+crickStaff);
+		service.insertCrickStaff(crickStaff);
+	}
+	@PutMapping("updateCrickStaff")
+	public void updateCrickStaff(@RequestBody CrickStaff crickStaff) {
+		System.out.println(" Cric staff datafrom postman "+crickStaff);
+		service.updateCrickStaff(crickStaff);
+		
+	}
 	
 	
 	
@@ -67,38 +104,9 @@ public class WorldCup20ProjectController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//all players whose name start with s
-	
-//	@GetMapping("/maxx")
-//	 public List<CrickStaff> findFirstByOrderByStaffNoOfYaersToBCCIDesc() {
-//	        return service.findFirstByOrderByStaffNoOfYaersToBCCIDesc();
-//	    }
-	
-	
-	
-	
-	
-//	@GetMapping("/searchByName/{staffId}")
-//	public List<CrickStaff> searchByName(@PathVariable int staffId ) {
-//	    return service.searchByName(staffId);
-//	}
-//	
-//	@PostMapping("/max")
-//	public CrickStaff maxYearTowork() {
-//		return service.maxYearTowork();
-//		
-//	}
-
 }
+	
+	
+	
+	
+	
